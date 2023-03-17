@@ -1,0 +1,21 @@
+{
+    "id": "1",
+    "jobTitle": "Developer",
+    "division": ".NET",
+    "profLevel": "Middle",
+    "location": "Minsk",
+    "address": "Zhukava 29",
+    "englishLevel": "B2",
+    "lastCheck": "10/05/2022",
+    "hiringDate": "07/10/2021",
+    "workPeriod": "1 years 4 month",
+    "isPassProbation": true,
+    "contractStatus": "current",
+    "typeOfWork": "Mixed",
+    "probationEndDate": "07/01/2022",
+    "contractStartDate": "07/10/2021",
+    "contractEndDate": "06/10/2023",
+    "mobilePhone": "+ 375 29 512 77 16",
+    "email": "geras210e@gmail.com",
+    "workspace": "728"
+}

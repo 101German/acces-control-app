@@ -1,0 +1,92 @@
+<div class="personal_page_container">
+    <div class="personal_info">
+        <div class="user_photo_block"></div>
+        <div class="text_info">
+            <p>Shvayukou Herman</p>
+            <div class="personal_info_block">
+                <div class="personal_info_item">
+                    <p>Job Title</p>
+                    <p>{{employee?.jobTitle}}</p>
+                </div>
+                <div class="personal_info_item">
+                    <p>Location</p>
+                    <p>{{employee?.location}}</p>
+                </div>
+                <div class="personal_info_item">
+                    <p>English level</p>
+                    <p>{{employee?.engLevel}}</p>
+                </div>
+                <div class="personal_info_item">
+                    <p>Division</p>
+                    <p>{{employee?.division}}</p>
+                </div>
+                <div class="personal_info_item">
+                    <p>Address</p>
+                    <p>{{employee?.address}}</p>
+                </div>
+                <div class="personal_info_item">
+                    <p>Last check</p>
+                    <p>{{employee?.lastEngCheck}}</p>
+                </div>
+                <div class="personal_info_item">
+                    <p>Professional level</p>
+                    <p>{{employee?.profLevel}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="work_info">
+        <p>Work information</p>
+        <div class="work_info_block">
+            <div class="work_info_item">
+                <p>Hiring Date</p>
+                <p>{{employee?.hiringDate}}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Probation status</p>
+                <p>{{employee?.isPassProbation == true ? "Comleted" : "Not completed" }}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Probation end date</p>
+                <p>{{employee?.probationEndDate}}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Exp in company</p>
+                <p>{{employee?.workPeriod}}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Contract status</p>
+                <p>{{employee?.contractStatus}}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Contract start date</p>
+                <p>{{employee?.contractStartDate}}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Type of work</p>
+                <p>{{employee?.typeOfWork}}</p>
+            </div>
+            <div class="work_info_item">
+                <p>Contract end date</p>
+                <p>{{employee?.contractEndDate}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact_info">
+        <p>Contact information</p>
+        <div class="contact_info_block">
+            <div class="contact_info_item">
+                <p>Mobile phone</p>
+                <p>{{employee?.mobilePhone}}</p>
+            </div>
+            <div class="contact_info_item">
+                <p>Email</p>
+                <p>{{employee?.email}}</p>
+            </div>
+            <div class="contact_info_item">
+                <p>Workspace</p>
+                <p>{{employee?.workspace}}</p>
+            </div>
+        </div>
+    </div>
+</div>

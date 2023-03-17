@@ -1,0 +1,10 @@
+{
+        "userId":"1",
+        "hiringDate": "07/10/2021",
+        "isPassProbation": true,
+        "contractStatus": "current",
+        "typeOfWork": "Mixed",
+        "probationEndDate": "07/01/2022",
+        "contractStartDate": "07/10/2021",
+        "contractEndDate": "06/10/2023"
+}
