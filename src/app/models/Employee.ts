@@ -17,5 +17,6 @@ export class Employee{
         public typeOfWork: string,
         public probationEndDate: Date,
         public contractStartDate: Date,
-        public contractEndDate: Date){}
+        public contractEndDate: Date){
+        }
 }

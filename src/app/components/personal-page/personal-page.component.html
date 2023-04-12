@@ -1,91 +1,139 @@
-<div class="personal_page_container">
-    <div class="personal_info">
-        <div class="user_photo_block"></div>
-        <div class="text_info">
-            <p>Shvayukou Herman</p>
+<div class="personal_info">
+    <div class="user_photo_block"><img src="../../../assets/user.jpg" class="profile_photo"></div>
+    <div class="text_info">
+        <p class="emp_name">Shvayukou Herman</p>
+        <div style="display: flex;">
             <div class="personal_info_block">
                 <div class="personal_info_item">
-                    <p>Job Title</p>
-                    <p>{{employee?.jobTitle}}</p>
+                    <mat-icon class="info_icon">work</mat-icon>
+                    <div>
+                        <p class="info_title">Job Title</p>
+                        <p class="info_def">{{employee?.jobTitle}}</p>
+                    </div>
                 </div>
                 <div class="personal_info_item">
-                    <p>Location</p>
-                    <p>{{employee?.location}}</p>
+                    <mat-icon class="info_icon">pin_drop</mat-icon>
+                    <div>
+                        <p class="info_title">Location</p>
+                        <p class="info_def">{{employee?.location}}</p>
+                    </div>
                 </div>
                 <div class="personal_info_item">
-                    <p>English level</p>
-                    <p>{{employee?.engLevel}}</p>
+                    <mat-icon class="info_icon">forum</mat-icon>
+                    <div>
+                        <p class="info_title">English level</p>
+                        <p class="info_def">{{employee?.engLevel}}</p>
+                    </div>
                 </div>
                 <div class="personal_info_item">
-                    <p>Division</p>
-                    <p>{{employee?.division}}</p>
+                    <mat-icon class="info_icon">work</mat-icon>
+                    <div>
+                        <p class="info_title">Division</p>
+                        <p class="info_def">{{employee?.division}}</p>
+                    </div>
                 </div>
                 <div class="personal_info_item">
-                    <p>Address</p>
-                    <p>{{employee?.address}}</p>
+                    <mat-icon class="info_icon">apartment</mat-icon>
+                    <div>
+                        <p class="info_title">Address</p>
+                        <p class="info_def">{{employee?.address}}</p>
+                    </div>
                 </div>
                 <div class="personal_info_item">
-                    <p>Last check</p>
-                    <p>{{employee?.lastEngCheck}}</p>
+                    <mat-icon class="info_icon">calendar_month</mat-icon>
+                    <div>
+                        <p class="info_title">Last check</p>
+                        <p class="info_def">{{employee?.lastEngCheck}}</p>
+                    </div>
                 </div>
                 <div class="personal_info_item">
-                    <p>Professional level</p>
-                    <p>{{employee?.profLevel}}</p>
+                    <mat-icon class="info_icon">school</mat-icon>
+                    <div>
+                        <p class="info_title">Professional level</p>
+                        <p class="info_def">{{employee?.profLevel}}</p>
+                    </div>
                 </div>
+            </div>
+            <button type="button" class="btn btn-danger edit-btn" [routerLink]="['/employees/5/edit']">Edit</button>
+            <button type="button" class="btn btn-success pass-btn" [routerLink]="['/employees/5/pass']">Pass</button>
+        </div>
+    </div>
+</div>
+<div class="work_info">
+    <p style="margin: 10px;">Work information</p>
+    <div class="work_info_block">
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Hiring Date</p>
+                <p class="info_def">{{employee?.hiringDate}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Probation status</p>
+                <p class="info_def">{{employee?.isPassProbation == true ? "Comleted" : "Not completed"}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Probation end date</p>
+                <p class="info_def">{{employee?.probationEndDate}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Exp in company</p>
+                <p class="info_def">{{employee?.workPeriod}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Contract status</p>
+                <p class="info_def">{{employee?.contractStatus}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Contract start date</p>
+                <p class="info_def">{{employee?.contractStartDate}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Type of work</p>
+                <p class="info_def">{{employee?.typeOfWork}}</p>
+            </div>
+        </div>
+        <div class="work_info_item">
+            <div>
+                <p class="info_title">Contract end date</p>
+                <p class="info_def">{{employee?.contractEndDate}}</p>
             </div>
         </div>
     </div>
-    <div class="work_info">
-        <p>Work information</p>
-        <div class="work_info_block">
-            <div class="work_info_item">
-                <p>Hiring Date</p>
-                <p>{{employee?.hiringDate}}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Probation status</p>
-                <p>{{employee?.isPassProbation == true ? "Comleted" : "Not completed" }}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Probation end date</p>
-                <p>{{employee?.probationEndDate}}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Exp in company</p>
-                <p>{{employee?.workPeriod}}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Contract status</p>
-                <p>{{employee?.contractStatus}}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Contract start date</p>
-                <p>{{employee?.contractStartDate}}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Type of work</p>
-                <p>{{employee?.typeOfWork}}</p>
-            </div>
-            <div class="work_info_item">
-                <p>Contract end date</p>
-                <p>{{employee?.contractEndDate}}</p>
+</div>
+<div class="contact_info">
+    <p style="margin: 10px;">Contact information</p>
+    <div class="contact_info_block">
+        <div class="contact_info_item">
+            <mat-icon class="info_icon">phone_iphone</mat-icon>
+            <div>
+                <p class="info_title">Mobile phone</p>
+                <p class="info_def">{{employee?.mobilePhone}}</p>
             </div>
         </div>
-    </div>
-    <div class="contact_info">
-        <p>Contact information</p>
-        <div class="contact_info_block">
-            <div class="contact_info_item">
-                <p>Mobile phone</p>
-                <p>{{employee?.mobilePhone}}</p>
+        <div class="contact_info_item">
+            <mat-icon class="info_icon">mail</mat-icon>
+            <div>
+                <p class="info_title">Email</p>
+                <p class="info_def">{{employee?.email}}</p>
             </div>
-            <div class="contact_info_item">
-                <p>Email</p>
-                <p>{{employee?.email}}</p>
-            </div>
-            <div class="contact_info_item">
-                <p>Workspace</p>
-                <p>{{employee?.workspace}}</p>
+        </div>
+        <div class="contact_info_item">
+            <mat-icon class="info_icon">door_front</mat-icon>
+            <div>
+                <p class="info_title">Workspace</p>
+                <p class="info_def">{{employee?.workspace}}</p>
             </div>
         </div>
     </div>

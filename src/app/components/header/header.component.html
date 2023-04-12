@@ -17,9 +17,15 @@
                     <p class="user_name">Shvayukou Herman</p>
                     <p class="user_job_title">.NET Developer</p>
                 </div>
-                <div class="symbol_up">
-                    <span>&or;</span>
+                <div class="symbol_up" mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>expand_more</mat-icon>
                 </div>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>logout</mat-icon>
+                        <span>Log out</span>
+                    </button>
+                </mat-menu>
             </div>
         </div>
     </div>

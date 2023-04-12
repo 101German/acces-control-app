@@ -1,0 +1,69 @@
+.user_photo_block {
+    height: 100px;
+    width: 110px;
+    border-radius: 60px;
+    background-color: aliceblue;
+}
+
+.profile_photo {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+}
+
+.info_block {
+    display: flex;
+    height: 100%;
+}
+
+.text_info {
+    width: 100%;
+    height: 100%;
+}
+
+.emp_name {
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.personal_info_block {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    width: 700px;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.personal_info_item {
+    display: flex;
+    width: 180px;
+    height: 60px;
+}
+
+.info_icon {
+    color: #d7d7d7;
+    margin-right: 10px;
+}
+
+.info_title {
+    font-size: 16px;
+    color: #616161;
+    font-weight: 300;
+}
+
+.info_def {
+    font-size: 16px;
+}
+
+.edit-btn {
+    height: 40px;
+    margin-top: 10px;
+}
+
+.pass-btn {
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+}

@@ -1,0 +1,10 @@
+<div class="edit-panel-container">
+    <div class="tab-menu">
+        <div class="tab-item" [routerLink]="['personal-info']">Personal information</div>
+        <div class="tab-item" [routerLink]="['work-info']">Work information</div>
+        <div class="tab-item" [routerLink]="['contact-info']">Contact information</div>
+    </div>
+    <div class="tab-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>

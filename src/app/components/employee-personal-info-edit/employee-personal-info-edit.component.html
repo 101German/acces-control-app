@@ -1,0 +1,86 @@
+<form>
+    <div class="photo-input-block">
+        <label for="photo" class="upload-photo"><img [src]="imgSrc" width="100px" height="100px"></label>
+        <div class="photo-input">
+            <label for="photo" class="upload-photo">Upload photo</label>
+            <input type="file" id="photo" hidden (change)="onChangeFile($event)">
+            <p>JPG,JPEG,PNG no more than 5mb</p>
+        </div>
+    </div>
+    <div class="emp-info-form">
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>First Name</mat-label>
+                <input matInput value="Herman">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Last Name</mat-label>
+                <input matInput value="Shvayukou">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Job Title</mat-label>
+                <mat-select>
+                    <mat-option value="Developer">Developer</mat-option>
+                    <mat-option value="QA">QA</mat-option>
+                    <mat-option value="BA">BA</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Division</mat-label>
+                <mat-select>
+                    <mat-option value=".NET">.NET</mat-option>
+                    <mat-option value="JS">JS</mat-option>
+                    <mat-option value="Python">Python</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Prof. level</mat-label>
+                <mat-select>
+                    <mat-option value="Junior">Junior</mat-option>
+                    <mat-option value="Middle">Middle</mat-option>
+                    <mat-option value="Senior">Senior</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Location</mat-label>
+                <input matInput value="Minsk">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Address</mat-label>
+                <input matInput value="Zhukava 29">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>English level</mat-label>
+                <mat-select>
+                    <mat-option value="B1">B1</mat-option>
+                    <mat-option value="B2">B2</mat-option>
+                    <mat-option value="C1">C1</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="emp-info-input">
+                <mat-label>Last check</mat-label>
+                <input matInput type="date">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-buttons">
+        <button type="button" class="btn btn-light">Cancel</button>
+        <button type="button" class="btn btn-danger">Save changes</button>
+    </div>
+</form>

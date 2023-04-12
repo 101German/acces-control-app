@@ -12,7 +12,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class PersonalPageComponent implements OnInit {
 
-  employee!: Employee
+  employee: Employee | undefined
 
   constructor(private employeeService: EmployeeService) {
    }

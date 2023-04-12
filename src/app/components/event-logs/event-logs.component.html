@@ -1,0 +1,40 @@
+<search-panel [filterList]="filterList" [placeholderStr]="placeholderStr"></search-panel>
+<div class="mat-elevation-z8 event-log-table" style="margin-top: 10px;">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="RoomName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Room name</th>
+            <td mat-cell *matCellDef="let eventLog">
+                <a [routerLink]="['/place', eventLog.placeId]" routerLinkActive="router-link-active">
+                    {{eventLog.roomName}}
+                </a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="RoomNumber">
+            <th mat-header-cell *matHeaderCellDef> Room number </th>
+            <td mat-cell *matCellDef="let eventLog"> {{eventLog.roomNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="PassId">
+            <th mat-header-cell *matHeaderCellDef> Pass Id </th>
+            <td mat-cell *matCellDef="let eventLog"> {{eventLog.passId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="EmployeeName">
+            <th mat-header-cell *matHeaderCellDef> Employee name </th>
+            <td mat-cell *matCellDef="let eventLog"> {{eventLog.employeeName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="DateAccess">
+            <th mat-header-cell *matHeaderCellDef> Date Access </th>
+            <td mat-cell *matCellDef="let eventLog"> {{eventLog.dateAccess}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of employees">
+    </mat-paginator>
+</div>

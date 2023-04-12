@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
 
 html,
 body {
     height: 100%;
     width: 100%;
     max-height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -16,3 +20,47 @@ body {
 p {
     margin: 0;
 }
+
+::-webkit-scrollbar {
+    width: 7px;
+    background-color: #f9f9fd;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #5c6972;
+}
+
+.emp-info-form {
+    display: flex;
+    width: 750px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.emp-info-input {
+    width: 350px;
+    font-size: 18px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+    margin-left: auto;
+}
+
+table {
+    width: 100%
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.user_img {
+    border-radius: 50px;
+    margin: 5px;
+}
+
+@import "~@ng-select/ng-select/themes/default.theme.css";

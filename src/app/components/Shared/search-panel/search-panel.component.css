@@ -1,0 +1,50 @@
+.search-input {
+    height: 40px;
+}
+
+.search-submit {
+    height: 40px;
+}
+
+.search-form {
+    width: 300px;
+}
+
+.filter-panel {
+    display: flex;
+    width: 1200px;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.add-filter-button {
+    width: 80px;
+    height: 35px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #656565;
+    text-align: center;
+    font-size: 12px;
+}
+
+.filter-item {
+    font-size: 12px;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.filter-list {
+    display: flex;
+    width: 1000px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.reset-menu {
+    margin-left: 10px;
+    border-left: 1px solid black;
+}
+
+.reset-button {
+    margin-left: 10px;
+}

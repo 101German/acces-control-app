@@ -1,0 +1,32 @@
+<div class="search-form">
+    <div class="input-group">
+        <input type="text" class="form-control search-input" placeholder={{placeholderStr}} aria-label="Search"
+            aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary search-submit" type="button"><mat-icon>search</mat-icon></button>
+        </div>
+    </div>
+</div>
+<div class="filter-panel">
+    <button class="add-filter-button" mat-button [matMenuTriggerFor]="menu">More +</button>
+    <mat-menu #menu="matMenu">
+        <div class="menu-block" style="width: 150px; height: 100px;">
+            <mat-checkbox *ngFor="let filterItem of filterList" (change)="check(filterItem)"
+                class="mat-menu-item">{{filterItem.name}}</mat-checkbox>
+        </div>
+    </mat-menu>
+
+    <div class="filter-list">
+        <div class="filter-item" *ngFor="let filter of selectedFilterList">
+            <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
+                <mat-label>Manager Level</mat-label>
+                <mat-select multiple>
+                    <mat-option *ngFor="let option of filter.options">{{option.label}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="reset-menu" *ngIf="selectedFilterList.length > 0">
+            <button type="button" class="btn btn-danger reset-button" (click)="clean()">Reset</button>
+        </div>
+    </div>
+</div>
