@@ -1,0 +1,14 @@
+<form class="sign-form">
+  <p class="form-title">Sign In</p>
+  <div class="form-group">
+    <input class="form-input" type="text" placeholder=" " [(ngModel)]="userLogin" name="userLogin" />
+    <label class="form-label">Login</label>
+  </div>
+  <div class="form-group">
+    <input class="form-input" type="password" placeholder=" " [(ngModel)]="password" name="password" />
+    <label class="form-label">Password</label>
+  </div>
+  <button class="form-button" type="button" (click)="login()">
+    Submit
+  </button>
+</form>

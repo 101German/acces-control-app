@@ -1,4 +1,5 @@
 <search-panel [filterList]="filterList" [placeholderStr]="placeholderStr"></search-panel>
+<button mat-raised-button (click)="goToCreateEmployee()">Add employee</button>
 <div class="mat-elevation-z8" style="margin-top: 10px;">
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -7,24 +8,24 @@
             <td mat-cell *matCellDef="let employee" width="300px">
                 <a [routerLink]="['/employees', employee.id]" routerLinkActive="router-link-active">
                     <img src="../../../assets/user.jpg" width="50px" height="50px" class="user_img">
-                    {{employee.name}}
+                    {{employee.firstName}} {{employee.lastName}}
                 </a>
             </td>
         </ng-container>
 
         <ng-container matColumnDef="jobTitle">
             <th mat-header-cell *matHeaderCellDef> Job Title </th>
-            <td mat-cell *matCellDef="let employee"> {{employee.jobTitle}} </td>
+            <td mat-cell *matCellDef="let employee"> {{enumToStringHelperService.jobTitleEnumToString(employee.jobTitle)}} </td>
         </ng-container>
 
         <ng-container matColumnDef="profLevel">
             <th mat-header-cell *matHeaderCellDef> Prof. Level </th>
-            <td mat-cell *matCellDef="let employee"> {{employee.profLevel}} </td>
+            <td mat-cell *matCellDef="let employee"> {{enumToStringHelperService.proffLevelEnumToString(employee.professionalLevel)}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="managerLevel">
-            <th mat-header-cell *matHeaderCellDef> Manager Level </th>
-            <td mat-cell *matCellDef="let employee"> {{employee.managerLevel}} </td>
+        <ng-container matColumnDef="hiringDate">
+            <th mat-header-cell *matHeaderCellDef> Hiring Date </th>
+            <td mat-cell *matCellDef="let employee"> {{employee.hiringDate | date}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

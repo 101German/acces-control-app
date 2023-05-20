@@ -1,61 +1,54 @@
 <div class="personal_info">
     <div class="user_photo_block"><img src="../../../assets/user.jpg" class="profile_photo"></div>
     <div class="text_info">
-        <p class="emp_name">Shvayukou Herman</p>
+        <p class="emp_name">{{employee.lastName}} {{employee.firstName}}</p>
         <div style="display: flex;">
             <div class="personal_info_block">
                 <div class="personal_info_item">
                     <mat-icon class="info_icon">work</mat-icon>
                     <div>
                         <p class="info_title">Job Title</p>
-                        <p class="info_def">{{employee?.jobTitle}}</p>
+                        <p class="info_def">{{enumToStringHelperService.jobTitleEnumToString(employee.jobTitle)}}</p>
                     </div>
                 </div>
                 <div class="personal_info_item">
                     <mat-icon class="info_icon">pin_drop</mat-icon>
                     <div>
                         <p class="info_title">Location</p>
-                        <p class="info_def">{{employee?.location}}</p>
+                        <p class="info_def">{{employee.location}}</p>
                     </div>
                 </div>
                 <div class="personal_info_item">
                     <mat-icon class="info_icon">forum</mat-icon>
                     <div>
                         <p class="info_title">English level</p>
-                        <p class="info_def">{{employee?.engLevel}}</p>
+                        <p class="info_def">{{enumToStringHelperService.englishLevelEnumToString(employee.englishLevel)}}</p>
                     </div>
                 </div>
                 <div class="personal_info_item">
                     <mat-icon class="info_icon">work</mat-icon>
                     <div>
                         <p class="info_title">Division</p>
-                        <p class="info_def">{{employee?.division}}</p>
+                        <p class="info_def">{{employee.division}}</p>
                     </div>
                 </div>
                 <div class="personal_info_item">
                     <mat-icon class="info_icon">apartment</mat-icon>
                     <div>
                         <p class="info_title">Address</p>
-                        <p class="info_def">{{employee?.address}}</p>
-                    </div>
-                </div>
-                <div class="personal_info_item">
-                    <mat-icon class="info_icon">calendar_month</mat-icon>
-                    <div>
-                        <p class="info_title">Last check</p>
-                        <p class="info_def">{{employee?.lastEngCheck}}</p>
+                        <p class="info_def">{{employee.address}}</p>
                     </div>
                 </div>
                 <div class="personal_info_item">
                     <mat-icon class="info_icon">school</mat-icon>
                     <div>
                         <p class="info_title">Professional level</p>
-                        <p class="info_def">{{employee?.profLevel}}</p>
+                        <p class="info_def">{{enumToStringHelperService.proffLevelEnumToString(employee.professionalLevel)}}</p>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-danger edit-btn" [routerLink]="['/employees/5/edit']">Edit</button>
-            <button type="button" class="btn btn-success pass-btn" [routerLink]="['/employees/5/pass']">Pass</button>
+            <button type="button" class="btn btn-danger edit-btn" (click)="goToEditEmployee()">Edit</button>
+            <button type="button" class="btn btn-success pass-btn" (click)="goToPassEmployee()">Pass</button>
         </div>
     </div>
 </div>
@@ -65,49 +58,49 @@
         <div class="work_info_item">
             <div>
                 <p class="info_title">Hiring Date</p>
-                <p class="info_def">{{employee?.hiringDate}}</p>
+                <p class="info_def">{{employee.hiringDate | date}}</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Probation status</p>
-                <p class="info_def">{{employee?.isPassProbation == true ? "Comleted" : "Not completed"}}</p>
+                <p class="info_def">{{enumToStringHelperService.probationStatusEnumToString(employee.probationStatus)}}</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Probation end date</p>
-                <p class="info_def">{{employee?.probationEndDate}}</p>
+                <p class="info_def">{{employee.probationEndDate | date}}</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Exp in company</p>
-                <p class="info_def">{{employee?.workPeriod}}</p>
+                <p class="info_def">10 years</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Contract status</p>
-                <p class="info_def">{{employee?.contractStatus}}</p>
+                <p class="info_def">{{enumToStringHelperService.contractStatusEnumToString(employee.contractStatus)}}</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Contract start date</p>
-                <p class="info_def">{{employee?.contractStartDate}}</p>
+                <p class="info_def">{{employee.contractStartDate | date}}</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Type of work</p>
-                <p class="info_def">{{employee?.typeOfWork}}</p>
+                <p class="info_def">{{enumToStringHelperService.typeOfWorkEnumToString(employee.typeOfWork)}}</p>
             </div>
         </div>
         <div class="work_info_item">
             <div>
                 <p class="info_title">Contract end date</p>
-                <p class="info_def">{{employee?.contractEndDate}}</p>
+                <p class="info_def">{{employee.contractEndDate | date}}</p>
             </div>
         </div>
     </div>
@@ -119,21 +112,21 @@
             <mat-icon class="info_icon">phone_iphone</mat-icon>
             <div>
                 <p class="info_title">Mobile phone</p>
-                <p class="info_def">{{employee?.mobilePhone}}</p>
+                <p class="info_def">{{employee.mobilePhone}}</p>
             </div>
         </div>
         <div class="contact_info_item">
             <mat-icon class="info_icon">mail</mat-icon>
             <div>
                 <p class="info_title">Email</p>
-                <p class="info_def">{{employee?.email}}</p>
+                <p class="info_def">{{employee.email}}</p>
             </div>
         </div>
         <div class="contact_info_item">
             <mat-icon class="info_icon">door_front</mat-icon>
             <div>
                 <p class="info_title">Workspace</p>
-                <p class="info_def">{{employee?.workspace}}</p>
+                <p class="info_def">{{employee.workSpace}}</p>
             </div>
         </div>
     </div>

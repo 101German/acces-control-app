@@ -29,8 +29,24 @@ import { EmployeePersonalInfoEditComponent } from './components/employee-persona
 import { EmployeeWorkInfoEditComponent } from './components/employee-work-info-edit/employee-work-info-edit.component';
 import { EmployeeContactInfoEditComponent } from './components/employee-contact-info-edit/employee-contact-info-edit.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import { EmployeePassPageComponent } from './components/employee-pass-page/employee-pass-page.component';
 import { PlaceDetailsComponent } from './components/place-details/place-details.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { JwtModule } from '@auth0/angular-jwt';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { MainComponent } from './components/main/main.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { RequestCreateFormComponent } from './components/request-create-form/request-create-form.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogRequestFormComponent } from './components/dialogs/dialog-request-form/dialog-request-form.component';
+import { EnumToArrayPipe } from './pipes/EnumToArrayPipe';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+
+export function tokenGetter() {
+  return sessionStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -47,11 +63,21 @@ import { PlaceDetailsComponent } from './components/place-details/place-details.
     EmployeeContactInfoEditComponent,
     EmployeePassPageComponent,
     PlaceDetailsComponent,
+    SignInComponent,
+    MainComponent,
+    RequestsComponent,
+    RequestCreateFormComponent,
+    DialogRequestFormComponent,
+    EnumToArrayPipe,
+    UserPageComponent,
+    AddEmployeeComponent,
   ],
   imports: [
     BrowserModule,
     MatListModule,
+    MatButtonModule,
     MatPaginatorModule,
+    MatDialogModule,
     MatTableModule,
     MatInputModule,
     ScrollingModule,
@@ -67,7 +93,13 @@ import { PlaceDetailsComponent } from './components/place-details/place-details.
     MatMenuModule,
     HttpClientModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    OAuthModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

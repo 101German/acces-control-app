@@ -1,0 +1,18 @@
+<h1 mat-dialog-title class="form-title">Create Request</h1>
+<div mat-dialog-content>
+    <form class="request-form">
+        <mat-form-field class="form-field">
+          <mat-label>Title</mat-label>
+          <input matInput name="title" [(ngModel)]="title">
+        </mat-form-field>
+      
+        <mat-form-field class="form-field">
+          <mat-label>Leave a request description</mat-label>
+          <textarea matInput name="description" [(ngModel)]="description"></textarea>
+        </mat-form-field>
+      </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="create()">Create</button>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+</div>

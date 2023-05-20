@@ -11,19 +11,19 @@
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>First Name</mat-label>
-                <input matInput value="Herman">
+                <input matInput name="firstName" [(ngModel)]="firstName">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Last Name</mat-label>
-                <input matInput value="Shvayukou">
+                <input matInput name="lastName" [(ngModel)]="lastName">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Job Title</mat-label>
-                <mat-select>
+                <mat-select name="jobTitle" [(ngModel)]="jobTitle">
                     <mat-option value="Developer">Developer</mat-option>
                     <mat-option value="QA">QA</mat-option>
                     <mat-option value="BA">BA</mat-option>
@@ -33,54 +33,43 @@
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Division</mat-label>
-                <mat-select>
-                    <mat-option value=".NET">.NET</mat-option>
-                    <mat-option value="JS">JS</mat-option>
-                    <mat-option value="Python">Python</mat-option>
-                </mat-select>
+                <input matInput name="division" [(ngModel)]="division">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Prof. level</mat-label>
-                <mat-select>
-                    <mat-option value="Junior">Junior</mat-option>
-                    <mat-option value="Middle">Middle</mat-option>
-                    <mat-option value="Senior">Senior</mat-option>
+                <mat-select name="professionalLevel" [(ngModel)]="professionalLevel">
+                    <mat-option value= "Junior">Junior</mat-option>
+                    <mat-option value= "Middle">Middle</mat-option>
+                    <mat-option value= "Senior">Senior</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Location</mat-label>
-                <input matInput value="Minsk">
+                <input matInput name="location" [(ngModel)]="location">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Address</mat-label>
-                <input matInput value="Zhukava 29">
+                <input matInput name="address" [(ngModel)]="address">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>English level</mat-label>
-                <mat-select>
+                <mat-select name="englishLevel" [(ngModel)]="englishLevel">
+                    <mat-option value="A2">A2</mat-option>
                     <mat-option value="B1">B1</mat-option>
                     <mat-option value="B2">B2</mat-option>
-                    <mat-option value="C1">C1</mat-option>
                 </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="form-group">
-            <mat-form-field class="emp-info-input">
-                <mat-label>Last check</mat-label>
-                <input matInput type="date">
             </mat-form-field>
         </div>
     </div>
     <div class="form-buttons">
-        <button type="button" class="btn btn-light">Cancel</button>
-        <button type="button" class="btn btn-danger">Save changes</button>
+        <button type="button" class="btn btn-danger" (click) = "submit()">Save</button>
     </div>
 </form>

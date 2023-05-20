@@ -1,10 +1,26 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { AuthConfig } from "angular-oauth2-oidc";
+
+export const authConfig: AuthConfig = {
+  issuer: "https://localhost:7039",
+  redirectUri: window.location.origin,
+  clientId: "access-control-app",
+  scope: 'access-control-api openid profile email roles',
+  postLogoutRedirectUri: window.location.origin,
+  requireHttps: false,
+  loginUrl: "https://localhost:7039/Auth/Login"
+}
 
 export const environment = {
-  production: false
-};
+  production:false,
+  urlApi: "https://localhost:7039",
+  authentication: authConfig,
+  name: "LOCAL",
+  issuer: "https://localhost:7039",
+  clientPortalApiConfig: {
+    host: "https://localhost:7039",
+    baseUrl: "api"
+  }
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -37,15 +37,17 @@ export class EventLogsComponent implements AfterViewInit{
     ]}
   ]
   public displayedColumns: string[]=["RoomName","RoomNumber","EmployeeName","PassId","DateAccess"];
-  public dataSource = new MatTableDataSource<EventLog>(EVENT_DATA);
+  public dataSource = new MatTableDataSource<EventLog>();
 
   ngAfterViewInit(): void {
+    this.dataSource = new MatTableDataSource<EventLog>(EVENT_DATA);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 }
 
 const EVENT_DATA: EventLog[]=[
+  {id:1,roomName:"Work room",placeId:1,roomNumber:"341",employeeName:"Stiv Matiu",passId:"kf14j351jd1jkwk",dateAccess: new Date("10/03/2023").toISOString().replace("T"," ").replace("Z"," ").slice(0,19)},
   {id:1,roomName:"Work room",placeId:1,roomNumber:"341",employeeName:"Stiv Matiu",passId:"kf14j351jd1jkwk",dateAccess: new Date("10/03/2023").toISOString().replace("T"," ").replace("Z"," ").slice(0,19)},
   {id:1,roomName:"Work room",placeId:1,roomNumber:"341",employeeName:"Stiv Matiu",passId:"kf14j351jd1jkwk",dateAccess: new Date("10/03/2023").toISOString().replace("T"," ").replace("Z"," ").slice(0,19)},
   {id:1,roomName:"Work room",placeId:1,roomNumber:"341",employeeName:"Stiv Matiu",passId:"kf14j351jd1jkwk",dateAccess: new Date("10/03/2023").toISOString().replace("T"," ").replace("Z"," ").slice(0,19)},

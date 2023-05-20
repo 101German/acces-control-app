@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactInfo } from 'src/app/models/ContactInfo';
-import { Employee } from 'src/app/models/Employee';
-import { PersonalInfo } from 'src/app/models/PersonalInfo';
-import { WorkInfo } from 'src/app/models/WorkInfo';
+import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Employee } from 'src/app/models/Employee/Employee';
+import { ContractStatusEnum } from 'src/app/enums/ContractStatusEnum';
+import { ConvertEnumToStringHelperService } from 'src/app/helpers/convert-enum-to-string-helper.service';
 
 @Component({
   selector: 'app-personal-page',
@@ -11,34 +11,38 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./personal-page.component.css']
 })
 export class PersonalPageComponent implements OnInit {
+  @Input() employeeId: number = 0;
+  contractStatuses: ContractStatusEnum;
+  employee: Employee = new Employee();
 
-  employee: Employee | undefined
+  constructor(private employeeService: EmployeeService,
+     private route: ActivatedRoute,
+     private router: Router,
+     public enumToStringHelperService: ConvertEnumToStringHelperService) {
 
-  constructor(private employeeService: EmployeeService) {
    }
 
   ngOnInit(): void {
-   this.employeeService.getEmployee().subscribe({next: (data: any)=> {
-    console.log("data ", data)
-    this.employee = new Employee(data.id,
-    data.mobilePhone,
-    data.email,
-    data.workspace,
-    data.jobTitle,
-    data.division,
-    data.profLevel,
-    data.location,
-    data.address,
-    data.englishLevel,
-    data.lastCheck,
-    data.hiringDate,
-    data.workPeriod,
-    data.isPassProbation,
-    data.contractStatus,
-    data.typeOfWork,
-    data.probationEndDate,
-    data.contractStartDate,
-    data.contractEndDate)}});
+    let id;
+    if(this.employeeId != 0){
+      id = this.employeeId;
+    }
+    else{
+      id = Number(this.route.snapshot.paramMap.get('id'));
+    }
+    console.log("Id: ", id)
+    this.employeeService.getEmployee(id).subscribe((data) => {
+      console.log(data);
+      this.employee = data;
+    })
+  }
+
+  goToEditEmployee(){
+  this.router.navigate(['employees', this.employee?.id, 'edit'])
+  }
+
+  goToPassEmployee(){
+    this.router.navigate(['employees', this.employee?.id, 'pass'])
   }
 
 }

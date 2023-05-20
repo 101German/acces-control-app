@@ -7,35 +7,35 @@
                 <mat-icon class="info_icon">work</mat-icon>
                 <div>
                     <p class="info_title">Creating Date</p>
-                    <p class="info_def">21/10/2020</p>
+                    <p class="info_def">{{pass?.creatingDate | date}}</p>
                 </div>
             </div>
             <div class="personal_info_item">
                 <mat-icon class="info_icon">work</mat-icon>
                 <div>
                     <p class="info_title">Expired Date</p>
-                    <p class="info_def">21/10/2025</p>
+                    <p class="info_def">{{pass?.expiredDate | date}}</p>
                 </div>
             </div>
             <div class="personal_info_item">
                 <mat-icon class="info_icon">work</mat-icon>
                 <div>
                     <p class="info_title">Blocked</p>
-                    <p class="info_def">No</p>
+                    <p class="info_def">{{pass?.isBlocked ? "Yes" : "No"}}</p>
                 </div>
             </div>
             <div class="personal_info_item">
                 <mat-icon class="info_icon">work</mat-icon>
                 <div>
                     <p class="info_title">Approve by</p>
-                    <p class="info_def">Matyu Makkonahi</p>
+                    <p class="info_def">{{pass?.approvedBy}}</p>
                 </div>
             </div>
             <div class="personal_info_item">
                 <mat-icon class="info_icon">work</mat-icon>
                 <div>
                     <p class="info_title">Pass Id</p>
-                    <p class="info_def">guid</p>
+                    <p class="info_def">{{pass?.id}}</p>
                 </div>
             </div>
         </div>
@@ -63,11 +63,6 @@
             <th mat-header-cell *matHeaderCellDef> Division </th>
             <td mat-cell *matCellDef="let place"> {{place.division}} </td>
         </ng-container>
-        <ng-container matColumnDef="lastAccess">
-            <th mat-header-cell *matHeaderCellDef> Last access </th>
-            <td mat-cell *matCellDef="let place"> {{place.lastAccessDate}} </td>
-        </ng-container>
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

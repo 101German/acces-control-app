@@ -3,24 +3,23 @@
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Mobile phone</mat-label>
-                <input matInput value="+375295127716">
+                <input matInput name="mobilePhone" [(ngModel)]="mobilePhone">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Email</mat-label>
-                <input matInput type="email" value="geras210e@gmail.com">
+                <input matInput type="email" name="email" [(ngModel)]="email">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Workspace</mat-label>
-                <input matInput value="721">
+                <input matInput name="workSpace" [(ngModel)]="workSpace">
             </mat-form-field>
         </div>
     </div>
     <div class="form-buttons">
-        <button type="button" class="btn btn-light">Cancel</button>
-        <button type="submit" class="btn btn-danger">Save changes</button>
+        <button type="submit" class="btn btn-danger" (click)="submit()">Save</button>
     </div>
 </form>

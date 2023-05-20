@@ -3,60 +3,57 @@
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Hiring date</mat-label>
-                <input type="date" matInput>
+                <input type="date" matInput name="hiringDate" [(ngModel)]="hiringDate">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Probation status</mat-label>
-                <mat-select multiple>
-                    <mat-option>First</mat-option>
+                <mat-select name="probationStatus" [(ngModel)]="probationStatus">
+                    <mat-option value="Completed">Comleted</mat-option>
+                    <mat-option value="NotComleted">Not Comleted</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Probation end date</mat-label>
-                <input type="date" matInput>
-            </mat-form-field>
-        </div>
-        <div class="form-group">
-            <mat-form-field class="emp-info-input">
-                <mat-label>Exp in company</mat-label>
-                <input matInput type="date" disabled>
+                <input type="date" matInput name="probationEndDate" [(ngModel)]="probationEndDate">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Contract status</mat-label>
-                <mat-select multiple>
-                    <mat-option>First</mat-option>
+                <mat-select name="contractStatus" [(ngModel)]="contractStatus">
+                    <mat-option value="Current">Current</mat-option>
+                    <mat-option value="Terminated">Terminated</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Contract start date</mat-label>
-                <input matInput type="date">
+                <input matInput type="date" name="contractStartDate" [(ngModel)]="contractStartDate">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Type of work</mat-label>
-                <mat-select multiple>
-                    <mat-option>First</mat-option>
+                <mat-select name="typeOfWork" [(ngModel)]="typeOfWork">
+                    <mat-option value="Office">Office</mat-option>
+                    <mat-option value="Remote">Remote</mat-option>
+                    <mat-option value="Mixed">Mixed</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field class="emp-info-input">
                 <mat-label>Contract end date</mat-label>
-                <input matInput type="date">
+                <input matInput type="date" name="contractEndDate" [(ngModel)]="contractEndDate">
             </mat-form-field>
         </div>
     </div>
     <div class="form-buttons">
-        <button type="button" class="btn btn-light">Cancel</button>
-        <button type="submit" class="btn btn-danger">Save changes</button>
+        <button type="submit" class="btn btn-danger" (click)="submit()">Save</button>
     </div>
 </form>
