@@ -20,6 +20,7 @@
         </div>
     </div>
     <div class="form-buttons">
-        <button type="submit" class="btn btn-danger" (click)="submit()">Save</button>
+        <button type="submit" class="btn btn-danger" (click)="submit()" *ngIf="employeeId!==0">Save</button>
+        <button type="submit" class="btn btn-danger btn-create" (click)="submit()" *ngIf="employeeId==0">Create</button>
     </div>
 </form>

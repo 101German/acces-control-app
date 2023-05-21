@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     let userId = this.jwtService.getId();
     this.employeeService.getEmployeeByUserId(userId).subscribe((emp)=> {
-      console.log("EMP ", emp)
       this.employee = emp;
     })
   }

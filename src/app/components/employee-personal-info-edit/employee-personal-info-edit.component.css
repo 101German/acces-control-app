@@ -32,3 +32,8 @@
 .upload-photo {
     cursor: pointer;
 }
+
+.btn-next{
+    margin-left: 180px;
+    width: 80px;
+}

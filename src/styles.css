@@ -62,5 +62,15 @@ a {
     border-radius: 50px;
     margin: 5px;
 }
+.search-input {
+    height: 40px;
+}
 
+.search-submit {
+    height: 40px;
+}
+
+.search-form {
+    width: 300px;
+}
 @import "~@ng-select/ng-select/themes/default.theme.css";

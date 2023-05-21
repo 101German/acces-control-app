@@ -5,11 +5,12 @@ import { ProbationStatusEnum } from "src/app/enums/ProbationStatusEnum";
 import { ProfessionalLevelEnum } from "src/app/enums/ProfessionalLevelEnum";
 import { TypeOfWorkEnum } from "src/app/enums/TypeOfWorkEnum";
 
-export class Employee{
-    constructor(public id: string ="",
+export class Employee {
+  constructor(
+    public id: number = 0,
     public firstName: string = "",
     public lastName: string = "",
-    public jobTitle:JobTitleEnum = 0,
+    public jobTitle: JobTitleEnum = 0,
     public division: string = "",
     public professionalLevel: ProfessionalLevelEnum = 0,
     public location: string = "",
@@ -24,5 +25,6 @@ export class Employee{
     public contractEndDate: Date = new Date(),
     public mobilePhone: string = "",
     public email: string = "",
-    public workSpace: string = "") {}
+    public workSpace: string = ""
+  ) {}
 }

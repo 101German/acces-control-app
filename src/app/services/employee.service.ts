@@ -4,6 +4,7 @@ import { Employee } from "src/app/models/Employee/Employee";
 import { EmployeePersonalInfo } from "../models/Employee/EmployeePersonalInfo";
 import { WorkEmployeeInfo } from "../models/Employee/WorkEmployeeInfo";
 import { EmployeeContactInfo } from "../models/Employee/EmployeeContactInfo";
+import { EmployeeRegisterInfo } from "../models/Employee/EmployeeRegisterInfo";
 
 @Injectable({
   providedIn: "root",
@@ -63,9 +64,46 @@ export class EmployeeService {
     });
   }
 
-  getEmployeeByUserId(userId: string){
+  getEmployeeByUserId(userId: string) {
     const params = new HttpParams().set("userId", userId);
     return this.http.get<Employee>(this.url + "/GetEmployeeByUserId", {
+      params: params,
+    });
+  }
+
+  createEmployee(
+    personalInfo: EmployeePersonalInfo,
+    workInfo: WorkEmployeeInfo,
+    contactInfo: EmployeeContactInfo,
+    registerInfo: EmployeeRegisterInfo
+  ) {
+    const body = {
+      personalInfo: personalInfo,
+      workInfo: workInfo,
+      contactInfo: contactInfo,
+      registerInfo: registerInfo,
+    };
+
+    console.log("reg info ", registerInfo);
+    return this.http.post(this.url + "/CreateEmployee", body);
+  }
+
+  getEmployeesByWorkRoomId(workRoomId: number) {
+    return this.http.get<Employee[]>(
+      this.url + "/GetEmployeesByWorkRoomId/" + workRoomId
+    );
+  }
+
+  searchEmployees(searchString: string, workRoomId: number) {
+    let params = new HttpParams().set("searchString", searchString);
+    console.log("WRID ", workRoomId);
+    if (workRoomId != 0) {
+      params = params
+        .set("workRoomId", workRoomId)
+        .set("searchString", searchString);
+      console.log("PARAMS ", params);
+    }
+    return this.http.get<Employee[]>(this.url + "/SearchEmployees", {
       params: params,
     });
   }

@@ -1,0 +1,26 @@
+<h1 mat-dialog-title class="form-title">Create User</h1>
+<div mat-dialog-content>
+    <form class="request-form">
+        <mat-form-field class="form-field">
+          <mat-label>Login</mat-label>
+          <input matInput name="login" [(ngModel)]="login"/>
+        </mat-form-field>
+      
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput name="password" [(ngModel)]="password"/>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <mat-label>Role</mat-label>
+            <mat-select name="englishLevel" [(ngModel)]="role">
+                <mat-option value="user">User</mat-option>
+                <mat-option value="moderator">Moderator</mat-option>
+                <mat-option value="admin">Admin</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="create()">Create</button>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+</div>

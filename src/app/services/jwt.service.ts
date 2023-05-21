@@ -20,4 +20,21 @@ export class JwtService implements OnInit {
     let id = this.jwtHelper.decodeToken()?.id;
     return id;
   }
+
+  public getRole(){
+    let role = this.jwtHelper.decodeToken()?.role;
+    return role;
+  }
+
+  public isAdmin(){
+    return this.jwtHelper.decodeToken()?.role == "admin";
+  }
+
+  public isModerator(){
+    return this.jwtHelper.decodeToken()?.role == "moderator";
+  }
+
+  public isUser(){
+    return this.jwtHelper.decodeToken()?.role == "user";
+  }
 }

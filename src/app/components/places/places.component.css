@@ -13,3 +13,19 @@
 table {
     width: 100%;
 }
+
+.search-input {
+    height: 40px;
+}
+
+.search-submit {
+    height: 40px;
+}
+
+.search-form {
+    width: 300px;
+}
+
+.add-new-room-btn{
+    margin: 10px 0px 10px 0px;
+}

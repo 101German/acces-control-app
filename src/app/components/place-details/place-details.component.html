@@ -2,33 +2,49 @@
     <div class="place_photo_block"><img src="../../../assets/place_img.png" class="place_photo"></div>
     <div class="text_info">
         <p class="place_name">Work room</p>
-        <div class="room_info_block">
-            <div class="room_info_item">
-                <mat-icon class="info_icon">work</mat-icon>
-                <div>
-                    <p class="info_title">Room number</p>
-                    <p class="info_def">{{workRoom.roomNumber}}</p>
+        <div class="info_container">
+            <div class="room_info_block">
+                <div class="room_info_item">
+                    <mat-icon class="info_icon">work</mat-icon>
+                    <div>
+                        <p class="info_title">Room number</p>
+                        <p class="info_def">{{workRoom.roomNumber}}</p>
+                    </div>
+                </div>
+                <div class="room_info_item">
+                    <mat-icon class="info_icon">work</mat-icon>
+                    <div>
+                        <p class="info_title">Division</p>
+                        <p class="info_def">{{workRoom.division}}</p>
+                    </div>
+                </div>
+                <div class="room_info_item">
+                    <mat-icon class="info_icon">work</mat-icon>
+                    <div>
+                        <p class="info_title">Floor</p>
+                        <p class="info_def">{{workRoom.floor}}</p>
+                    </div>
                 </div>
             </div>
-            <div class="room_info_item">
-                <mat-icon class="info_icon">work</mat-icon>
-                <div>
-                    <p class="info_title">Division</p>
-                    <p class="info_def">{{workRoom.division}}</p>
-                </div>
-            </div>
-            <div class="room_info_item">
-                <mat-icon class="info_icon">work</mat-icon>
-                <div>
-                    <p class="info_title">Floor</p>
-                    <p class="info_def">{{workRoom.floor}}</p>
-                </div>
+            <div class="action_buttons">
+                <ng-template [ngIf]="jwtService.isAdmin() && jwtService.isModerator()">
+                    <button mat-flat-button color="accent" (click)="edit()">Edit</button>
+                </ng-template>
             </div>
         </div>
     </div>
 </div>
 <p style="margin-bottom: 10px;">Employee with access: </p>
-<search-panel [filterList]="filterList" [placeholderStr]="placeholderStr"></search-panel>
+<div class="search-form">
+    <div class="input-group">
+        <input type="text" class="form-control search-input" placeholder="emp..." aria-label="Search"
+            aria-describedby="basic-addon2" [(ngModel)]="searchString">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary search-submit" type="button"
+                (click)="search()"><mat-icon>search</mat-icon></button>
+        </div>
+    </div>
+</div>
 <div class="mat-elevation-z8" style="margin-top: 10px;">
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -37,24 +53,26 @@
             <td mat-cell *matCellDef="let employee" width="300px">
                 <a [routerLink]="['/employees', employee.id]" routerLinkActive="router-link-active">
                     <img src="../../../assets/user.jpg" width="50px" height="50px" class="user_img">
-                    {{employee.name}}
+                    {{employee.firstName}} {{employee.LastName}}
                 </a>
             </td>
         </ng-container>
 
         <ng-container matColumnDef="jobTitle">
             <th mat-header-cell *matHeaderCellDef> Job Title </th>
-            <td mat-cell *matCellDef="let employee"> {{employee.jobTitle}} </td>
+            <td mat-cell *matCellDef="let employee">
+                {{convertEnumToStringHelperService.jobTitleEnumToString(employee.jobTitle)}} </td>
         </ng-container>
 
         <ng-container matColumnDef="profLevel">
             <th mat-header-cell *matHeaderCellDef> Prof. Level </th>
-            <td mat-cell *matCellDef="let employee"> {{employee.profLevel}} </td>
+            <td mat-cell *matCellDef="let employee">
+                {{convertEnumToStringHelperService.proffLevelEnumToString(employee.professionalLevel)}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="managerLevel">
-            <th mat-header-cell *matHeaderCellDef> Manager Level </th>
-            <td mat-cell *matCellDef="let employee"> {{employee.managerLevel}} </td>
+        <ng-container matColumnDef="hiringDate">
+            <th mat-header-cell *matHeaderCellDef> Hiring Date </th>
+            <td mat-cell *matCellDef="let employee"> {{employee.hiringDate | date}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

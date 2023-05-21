@@ -4,4 +4,5 @@ export class Pass {
     public expiredDate: Date;
     public approvedBy: string;
     public isBlocked: boolean;
+    public workRoomNumbers: number[];
 }

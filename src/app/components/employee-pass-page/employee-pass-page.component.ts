@@ -1,14 +1,19 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
+import { Employee } from "src/app/models/Employee/Employee";
 import { FilterItem } from "src/app/models/Filters/FilterItem";
 import { Pass } from "src/app/models/Pass/Pass";
 import { Place } from "src/app/models/Place/Place";
 import { WorkRoom } from "src/app/models/WorkRoom/WorkRoom";
+import { EmployeeService } from "src/app/services/employee.service";
 import { PassService } from "src/app/services/pass.service";
 import { WorkroomService } from "src/app/services/workroom.service";
+import { CreatePassComponent, PassInfo } from "../dialogs/create-pass/create-pass.component";
+import { JwtService } from "src/app/services/jwt.service";
 
 @Component({
   selector: "app-employee-pass-page",
@@ -19,50 +24,13 @@ export class EmployeePassPageComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   public pass: Pass;
-
-  placeholderStr = "room number...";
-  filterList: FilterItem[] = [
-    {
-      id: 1,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 2,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 3,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 4,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-  ];
-
+  public employee: Employee = new Employee();
+  public isBlocked: boolean;
+  public searchNumber: number;
   public displayedColumns: string[] = [
     "roomName",
     "roomNumber",
+    "floor",
     "division",
   ];
   public dataSource = new MatTableDataSource<WorkRoom>();
@@ -70,22 +38,75 @@ export class EmployeePassPageComponent implements OnInit, AfterViewInit {
   constructor(
     private passService: PassService,
     private route: ActivatedRoute,
-    private workRoomSerive: WorkroomService
+    private workRoomSerive: WorkroomService,
+    public dialog: MatDialog,
+    private employeeService: EmployeeService,
+    public jwtService: JwtService,
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get("id"));
+    this.employeeService.getEmployee(id).subscribe((emp) => {
+      this.employee = emp;
+    });
     console.log("EMP id ", id);
-    this.passService.getPass(id).subscribe((data) => {
+    this.passService.getPassByEmpId(id).subscribe((data) => {
       this.pass = data;
-      this.workRoomSerive.getWorkRoomsByPassId(this.pass.id).subscribe((workRooms) => {
-        this.dataSource = new MatTableDataSource<WorkRoom>(workRooms)
-      })
+      this.isBlocked = this.pass.isBlocked;
+      this.workRoomSerive
+        .getWorkRoomsByPassId(this.pass.id)
+        .subscribe((workRooms) => {
+          this.dataSource = new MatTableDataSource<WorkRoom>(workRooms);
+        });
+    });
+    // this.workRoomSerive.getWorkRoomsByEmployeeId(id).subscribe((workRooms) => {
+    //   console.log("WR ", workRooms)
+    //   this.dataSource = new MatTableDataSource<WorkRoom>(workRooms);
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    // });
+  }
+
+  ngAfterViewInit(): void {}
+
+  block() {
+    this.passService.block(this.pass.id).subscribe(() => {
+      this.passService.getPassByEmpId(this.employee.id).subscribe((pass) => {
+        this.pass = pass;
+        this.isBlocked = this.pass.isBlocked;
+      });
     });
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  unblock() {
+    this.passService.unblock(this.pass.id).subscribe(() => {
+      this.passService.getPassByEmpId(this.employee.id).subscribe((pass) => {
+        this.pass = pass;
+        this.isBlocked = this.pass.isBlocked;
+      });
+    });
+  }
+
+  edit() {
+    let passInfo = new PassInfo();
+    passInfo.passId = this.pass.id;
+    passInfo.approvedBy = this.pass.approvedBy;
+    passInfo.employeeId = this.employee.id;
+    passInfo.expiredDate = this.pass.expiredDate;
+    passInfo.woorkRoomNumbers = this.pass.workRoomNumbers;
+    passInfo.edit = true;
+    const dialogRef = this.dialog.open(CreatePassComponent, {
+      data: passInfo,
+      height: "400px",
+      width: "600px",
+    });;
+  }
+
+  public search(){
+    this.workRoomSerive.searchWorkRooms(this.searchNumber, this.employee.id).subscribe((workRooms)=>{
+      this.dataSource = new MatTableDataSource<WorkRoom>(workRooms);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
   }
 }

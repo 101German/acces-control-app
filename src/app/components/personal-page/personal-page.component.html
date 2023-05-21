@@ -22,7 +22,8 @@
                     <mat-icon class="info_icon">forum</mat-icon>
                     <div>
                         <p class="info_title">English level</p>
-                        <p class="info_def">{{enumToStringHelperService.englishLevelEnumToString(employee.englishLevel)}}</p>
+                        <p class="info_def">
+                            {{enumToStringHelperService.englishLevelEnumToString(employee.englishLevel)}}</p>
                     </div>
                 </div>
                 <div class="personal_info_item">
@@ -43,12 +44,19 @@
                     <mat-icon class="info_icon">school</mat-icon>
                     <div>
                         <p class="info_title">Professional level</p>
-                        <p class="info_def">{{enumToStringHelperService.proffLevelEnumToString(employee.professionalLevel)}}</p>
+                        <p class="info_def">
+                            {{enumToStringHelperService.proffLevelEnumToString(employee.professionalLevel)}}</p>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-danger edit-btn" (click)="goToEditEmployee()">Edit</button>
-            <button type="button" class="btn btn-success pass-btn" (click)="goToPassEmployee()">Pass</button>
+            <ng-template [ngIf]="jwtService.isModerator() || jwtService.isAdmin()">
+                <button type="button" class="btn btn-danger edit-btn" (click)="goToEditEmployee()">Edit</button>
+            </ng-template>
+            <button type="button" class="btn btn-success pass-btn" (click)="goToPassEmployee()"
+                *ngIf="pass!==null">Pass</button>
+            <ng-template [ngIf]="(jwtService.isModerator() || jwtService.isAdmin()) && pass===null">
+                <button type="button" class="btn btn-success create-pass-btn" (click)="createPass()">+Add pass</button>
+            </ng-template>
         </div>
     </div>
 </div>
@@ -64,7 +72,8 @@
         <div class="work_info_item">
             <div>
                 <p class="info_title">Probation status</p>
-                <p class="info_def">{{enumToStringHelperService.probationStatusEnumToString(employee.probationStatus)}}</p>
+                <p class="info_def">{{enumToStringHelperService.probationStatusEnumToString(employee.probationStatus)}}
+                </p>
             </div>
         </div>
         <div class="work_info_item">
@@ -82,7 +91,8 @@
         <div class="work_info_item">
             <div>
                 <p class="info_title">Contract status</p>
-                <p class="info_def">{{enumToStringHelperService.contractStatusEnumToString(employee.contractStatus)}}</p>
+                <p class="info_def">{{enumToStringHelperService.contractStatusEnumToString(employee.contractStatus)}}
+                </p>
             </div>
         </div>
         <div class="work_info_item">

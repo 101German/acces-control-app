@@ -1,9 +1,9 @@
 export class EventLog{
-    public id: number;
-    public roomName: string;
-    public roomNumber: string;
+    public workRoomName: string;
+    public workRoomNumber: string;
     public employeeName: string;
+    public employeeId: number;
     public passId: string;
     public dateAccess: string;
-    public placeId: number;
+    public workRoomId: number;
 }

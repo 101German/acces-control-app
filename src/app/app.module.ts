@@ -43,6 +43,10 @@ import { DialogRequestFormComponent } from './components/dialogs/dialog-request-
 import { EnumToArrayPipe } from './pipes/EnumToArrayPipe';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { CreateUserFormComponent } from './components/dialogs/create-user-form/create-user-form.component';
+import { CreatePassComponent } from './components/dialogs/create-pass/create-pass.component';
+import { CreateWorkroomComponent } from './components/dialogs/create-workroom/create-workroom.component';
+import { EditWorkRoomComponent } from './components/dialogs/edit-work-room/edit-work-room.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -52,6 +56,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     HeaderComponent,
+    CreatePassComponent,
     PersonalPageComponent,
     EmployeesPageComponent,
     EventLogsComponent,
@@ -71,6 +76,9 @@ export function tokenGetter() {
     EnumToArrayPipe,
     UserPageComponent,
     AddEmployeeComponent,
+    CreateUserFormComponent,
+    CreateWorkroomComponent,
+    EditWorkRoomComponent,
   ],
   imports: [
     BrowserModule,

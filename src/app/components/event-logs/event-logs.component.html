@@ -1,19 +1,27 @@
-<search-panel [filterList]="filterList" [placeholderStr]="placeholderStr"></search-panel>
+<div class="search-form">
+    <div class="input-group">
+        <input type="text" class="form-control search-input" placeholder="passId" aria-label="Search"
+            aria-describedby="basic-addon2" [(ngModel)]="passId">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary search-submit" type="button" (click)="search()"><mat-icon>search</mat-icon></button>
+        </div>
+    </div>
+</div>
 <div class="mat-elevation-z8 event-log-table" style="margin-top: 10px;">
     <table mat-table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="RoomName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Room name</th>
             <td mat-cell *matCellDef="let eventLog">
-                <a [routerLink]="['/place', eventLog.placeId]" routerLinkActive="router-link-active">
-                    {{eventLog.roomName}}
+                <a [routerLink]="['/place', eventLog.workRoomId]" routerLinkActive="router-link-active">
+                    {{eventLog.workRoomName}}
                 </a>
             </td>
         </ng-container>
 
         <ng-container matColumnDef="RoomNumber">
             <th mat-header-cell *matHeaderCellDef> Room number </th>
-            <td mat-cell *matCellDef="let eventLog"> {{eventLog.roomNumber}} </td>
+            <td mat-cell *matCellDef="let eventLog"> {{eventLog.workRoomNumber}} </td>
         </ng-container>
 
         <ng-container matColumnDef="PassId">
@@ -23,12 +31,13 @@
 
         <ng-container matColumnDef="EmployeeName">
             <th mat-header-cell *matHeaderCellDef> Employee name </th>
-            <td mat-cell *matCellDef="let eventLog"> {{eventLog.employeeName}} </td>
+            <td mat-cell *matCellDef="let eventLog"><a [routerLink]="['/employees', eventLog.employeeId]"
+                    routerLinkActive="router-link-active"> {{eventLog.employeeName}} </a></td>
         </ng-container>
 
         <ng-container matColumnDef="DateAccess">
             <th mat-header-cell *matHeaderCellDef> Date Access </th>
-            <td mat-cell *matCellDef="let eventLog"> {{eventLog.dateAccess}} </td>
+            <td mat-cell *matCellDef="let eventLog"> {{eventLog.dateAccess | date: 'short'}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

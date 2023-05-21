@@ -28,46 +28,8 @@ import { ConvertEnumToStringHelperService } from "src/app/helpers/convert-enum-t
 export class RequestsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  placeholderStr = "room name...";
-  filterList: FilterItem[] = [
-    {
-      id: 1,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 2,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 3,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 4,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-  ];
-
+  employeeName: string = "";
+  
   public displayedColumns: string[] = [
     "Title",
     "Desctription",
@@ -95,8 +57,24 @@ export class RequestsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    let userId = this.jwtService.getId();
-    this.requestService.getRequests(userId).subscribe((requests) => {
+    if (this.jwtService.isAdmin()) {
+      this.requestService.getAllRequests().subscribe((requests) => {
+        this.dataSource = new MatTableDataSource<Request>(requests);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+    } else {
+      let userId = this.jwtService.getId();
+      this.requestService.getRequests(userId).subscribe((requests) => {
+        this.dataSource = new MatTableDataSource<Request>(requests);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+    }
+  }
+
+  search(){
+    this.requestService.searchRequests(this.employeeName).subscribe((requests) => {
       this.dataSource = new MatTableDataSource<Request>(requests);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

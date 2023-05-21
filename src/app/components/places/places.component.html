@@ -1,4 +1,16 @@
-<search-panel [filterList]="filterList" [placeholderStr]="placeholderStr"></search-panel>
+<div class="search-form">
+    <div class="input-group">
+        <input type="text" class="form-control search-input" placeholder="room number" aria-label="Search"
+            aria-describedby="basic-addon2" [(ngModel)]="workRoomNumber">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary search-submit" type="button"
+                (click)="search()"><mat-icon>search</mat-icon></button>
+        </div>
+    </div>
+</div>
+<ng-template [ngIf]="jwtService.isAdmin() || jwtService.isModerator()">
+    <button mat-stroked-button (click)="addNewWorkRoom()" class="add-new-room-btn">Add new WorkRoom</button>
+</ng-template>
 <div class="mat-elevation-z8" style="margin-top: 10px;">
     <table mat-table [dataSource]="dataSource" matSort>
 

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title class="form-title">{{isEdit ? "Edit pass" : "Create pass"}}</h1>
+<div mat-dialog-content>
+    <form class="request-form">
+        <mat-form-field class="form-field">
+          <mat-label>Expired date</mat-label>
+          <input matInput name="expiredDate" type="date" [(ngModel)]="expiredDate"/>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>ApprovedBy</mat-label>
+          <input matInput name="approvedBy" type="text" [(ngModel)]="approvedBy"/>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <mat-label>Rooms</mat-label>
+            <mat-select multiple name="workRooms" [(ngModel)]="selectedRoomNumbers">
+                <mat-option *ngFor="let number of workRoomNumbers" [value]="number">{{number}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="create()" *ngIf="!isEdit">Create</button>
+    <button mat-raised-button color="accent" (click)="edit()" *ngIf="isEdit">Edit</button>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+</div>
+

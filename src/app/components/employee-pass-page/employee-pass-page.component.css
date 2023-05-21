@@ -21,6 +21,10 @@
     height: 100%;
 }
 
+.pass_info{
+    display: flex;
+}
+
 .emp_name {
     margin-left: 20px;
     font-weight: 500;
@@ -66,4 +70,12 @@
     height: 40px;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    height: 60px;
+    padding: 10px;
 }

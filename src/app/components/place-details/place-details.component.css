@@ -67,3 +67,11 @@
     margin-top: 10px;
     margin-left: 10px;
 }
+
+.info_container{
+    display: flex;
+}
+
+.action_buttons{
+    padding: 10px;
+}

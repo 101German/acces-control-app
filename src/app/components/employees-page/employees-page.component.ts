@@ -9,6 +9,7 @@ import { JobTitleEnum } from "src/app/enums/JobTitleEnum";
 import { ProfessionalLevelEnum } from "src/app/enums/ProfessionalLevelEnum";
 import { ConvertEnumToStringHelperService } from "src/app/helpers/convert-enum-to-string-helper.service";
 import { Router } from "@angular/router";
+import { JwtService } from "src/app/services/jwt.service";
 
 @Component({
   selector: "app-employees-page",
@@ -18,48 +19,8 @@ import { Router } from "@angular/router";
 export class EmployeesPageComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  public placeholderStr = "first and last name";
-  public filterList: FilterItem[] = [
-    {
-      id: 1,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 2,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 3,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-    {
-      id: 4,
-      name: "Manager level",
-      options: [
-        { label: "M1", value: 1 },
-        { label: "M2", value: 2 },
-        { label: "M3", value: 3 },
-      ],
-    },
-  ];
-
+  public searchString: string = "";
   public employees: Employee[];
-
   public displayedColumns: string[] = [
     "name",
     "jobTitle",
@@ -71,6 +32,7 @@ export class EmployeesPageComponent implements OnInit, AfterViewInit {
     private employeeService: EmployeeService,
     public enumToStringHelperService: ConvertEnumToStringHelperService,
     private router: Router,
+    public jwtService: JwtService,
   ) {}
 
   ngOnInit(): void {}
@@ -83,7 +45,15 @@ export class EmployeesPageComponent implements OnInit, AfterViewInit {
     });
   }
 
- public goToCreateEmployee(){
-this.router.navigate(['create-employee'])
+  public goToCreateEmployee() {
+    this.router.navigate(["create-employee"]);
+  }
+
+  public search(){
+    this.employeeService.searchEmployees(this.searchString, 0).subscribe((emps)=>{
+      this.dataSource = new MatTableDataSource<Employee>(emps);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
   }
 }
